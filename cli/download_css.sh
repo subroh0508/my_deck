@@ -65,6 +65,10 @@ check_dependencies() {
         missing_deps+=("yq")
     fi
     
+    if ! command -v jq &> /dev/null; then
+        missing_deps+=("jq")
+    fi
+    
     if [ ${#missing_deps[@]} -ne 0 ]; then
         print_error "以下の依存関係が不足しています:"
         for dep in "${missing_deps[@]}"; do
@@ -73,6 +77,11 @@ check_dependencies() {
         echo ""
         echo "インストール方法:"
         echo "  brew install ${missing_deps[*]}"
+        echo ""
+        echo "必要なツール:"
+        echo "  - curl: HTTPダウンロード用"
+        echo "  - yq: YAML解析用"
+        echo "  - jq: JSON操作用（VSCode設定ファイル更新）"
         exit 1
     fi
 }
@@ -150,6 +159,43 @@ download_file() {
     fi
 }
 
+# VSCode設定ファイルを更新
+update_vscode_settings() {
+    local theme_key="$1"
+    local css_file_path="$2"
+    
+    # プロジェクトルートからの相対パスを計算
+    local project_root="${SCRIPT_DIR}/.."
+    local relative_path="./themes/${theme_key}${FILE_EXT}"
+    local vscode_settings="${project_root}/.vscode/settings.json"
+    
+    print_info "VSCode設定ファイルを更新します: $vscode_settings"
+    
+    # .vscode ディレクトリが存在しない場合は作成
+    local vscode_dir="${project_root}/.vscode"
+    if [ ! -d "$vscode_dir" ]; then
+        print_info ".vscode ディレクトリを作成します: $vscode_dir"
+        mkdir -p "$vscode_dir"
+    fi
+    
+    # settings.json が存在しない場合は初期化
+    if [ ! -f "$vscode_settings" ]; then
+        print_info "settings.json を初期化します"
+        echo '{"markdown.marp.themes": []}' > "$vscode_settings"
+    fi
+    
+    # 現在の設定を読み込み、テーマパスが既に存在するかチェック
+    if jq -e --arg path "$relative_path" '.["markdown.marp.themes"] | index($path)' "$vscode_settings" > /dev/null 2>&1; then
+        print_info "テーマパスは既に設定済みです: $relative_path"
+    else
+        # テーマパスを追加
+        local temp_file=$(mktemp)
+        jq --arg path "$relative_path" '.["markdown.marp.themes"] += [$path] | .["markdown.marp.themes"] |= unique' "$vscode_settings" > "$temp_file"
+        mv "$temp_file" "$vscode_settings"
+        print_success "VSCode設定にテーマパスを追加しました: $relative_path"
+    fi
+}
+
 # メイン処理
 main() {
     # 引数の解析
@@ -191,6 +237,9 @@ main() {
     
     # ダウンロード実行
     download_file "$THEME_KEY" "$URL" "$OUTPUT_FILE"
+    
+    # VSCode設定ファイルを更新
+    update_vscode_settings "$THEME_KEY" "$OUTPUT_FILE"
 }
 
 # スクリプト実行
