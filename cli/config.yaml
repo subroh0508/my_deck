@@ -13,5 +13,4 @@ defaults:
   event_name: "EventTitle"
   slide_title: "DeckTitle"
   author: "にしこりさぶろ〜(@subroh_0508)"
-  theme: "graph_paper"
-  
+  theme: "ex_graph_paper"
