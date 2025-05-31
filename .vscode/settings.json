@@ -1,0 +1,5 @@
+{
+  "markdown.marp.themes": [
+    "./themes/graph_paper.css",
+  ]
+}

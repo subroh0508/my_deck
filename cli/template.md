@@ -4,12 +4,13 @@ theme: {{THEME}}
 title: {{SLIDE_TITLE}}
 author: {{AUTHOR}}
 paginate: true
+_paginate: false
 ---
 
 # {{SLIDE_TITLE}}
 
 {{EVENT_NAME}}
-{{YEAR}}年{{MONTH}}月{{DAY}}日
+{{YEAR}}/{{MONTH}}/{{DAY}}
 
 {{AUTHOR}}
 
