@@ -1,0 +1,9 @@
+# Marp Themeのマッピング設定
+theme:
+  graph_paper:
+    url: "https://raw.githubusercontent.com/rnd195/marp-community-themes/live/themes/graph_paper.css"
+    description: "Graph Paper"
+    extension: ".css"
+
+# 設定
+theme_directory: "../themes"
