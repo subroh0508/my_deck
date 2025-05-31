@@ -33,12 +33,12 @@ show_usage() {
     echo ""
     echo "パラメータ:"
     echo "  日付           YYYYMMDD形式（省略時は今日の日付）"
-    echo "  イベント名     イベントの名前（省略時は 'EventTitle'）"
-    echo "  スライドタイトル スライドのタイトル（省略時は 'DeckTitle'）"
-    echo "  発表者情報     発表者の情報（省略時は 'にしこりさぶろ〜(@subroh_0508)'）"
+    echo "  イベント名     イベントの名前（省略時は設定ファイルのデフォルト値）"
+    echo "  スライドタイトル スライドのタイトル（省略時は設定ファイルのデフォルト値）"
+    echo "  発表者情報     発表者の情報（省略時は設定ファイルのデフォルト値）"
     echo ""
     echo "オプション:"
-    echo "  --theme <theme_key>  テーマ指定（デフォルト: graph_paper）"
+    echo "  --theme <theme_key>  テーマ指定（省略時は設定ファイルのデフォルト値）"
     echo "  --help, -h          このヘルプメッセージを表示"
     echo ""
     echo "例:"
@@ -47,6 +47,8 @@ show_usage() {
     echo "  $0                            # 全てデフォルト値"
     echo ""
     echo "出力ファイル: \${YYYY}/\${YYYYMMDD}_\${イベント名}.md"
+    echo ""
+    echo "※デフォルト値は config.yaml の defaults セクションで設定されています"
 }
 
 # 依存関係をチェック
@@ -81,6 +83,21 @@ check_template_file() {
     if [ ! -f "$TEMPLATE_FILE" ]; then
         print_error "テンプレートファイルが見つかりません: $TEMPLATE_FILE"
         exit 1
+    fi
+}
+
+# 設定ファイルからデフォルト値を読み込み
+load_defaults() {
+    if [ -f "$CONFIG_FILE" ]; then
+        DEFAULT_EVENT_NAME=$(yq eval ".defaults.event_name" "$CONFIG_FILE" | tr -d '\n')
+        DEFAULT_SLIDE_TITLE=$(yq eval ".defaults.slide_title" "$CONFIG_FILE" | tr -d '\n')
+        DEFAULT_AUTHOR=$(yq eval ".defaults.author" "$CONFIG_FILE" | tr -d '\n')
+        DEFAULT_THEME=$(yq eval ".defaults.theme" "$CONFIG_FILE" | tr -d '\n')
+    else
+        DEFAULT_EVENT_NAME="EventTitle"
+        DEFAULT_SLIDE_TITLE="DeckTitle"
+        DEFAULT_AUTHOR="にしこりさぶろ〜(@subroh_0508)"
+        DEFAULT_THEME="graph_paper"
     fi
 }
 
@@ -156,12 +173,20 @@ generate_markdown() {
 
 # メイン処理
 main() {
+    # 事前チェック
+    check_config_file
+    check_template_file
+    check_dependencies
+    
+    # 設定ファイルからデフォルト値を読み込み
+    load_defaults
+    
     # デフォルト値
     local date_str=""
     local event_name=""
     local slide_title=""
     local author=""
-    local theme="graph_paper"
+    local theme="$DEFAULT_THEME"
     
     # 引数の解析
     while [[ $# -gt 0 ]]; do
@@ -201,24 +226,21 @@ main() {
     fi
     
     if [ -z "$event_name" ] || [ "$event_name" = "" ]; then
-        event_name="EventTitle"
+        event_name="$DEFAULT_EVENT_NAME"
         print_info "イベント名が指定されていないため、デフォルト値を使用します: $event_name"
     fi
     
     if [ -z "$slide_title" ] || [ "$slide_title" = "" ]; then
-        slide_title="DeckTitle"
+        slide_title="$DEFAULT_SLIDE_TITLE"
         print_info "スライドタイトルが指定されていないため、デフォルト値を使用します: $slide_title"
     fi
     
     if [ -z "$author" ] || [ "$author" = "" ]; then
-        author="にしこりさぶろ〜(@subroh_0508)"
+        author="$DEFAULT_AUTHOR"
         print_info "発表者情報が指定されていないため、デフォルト値を使用します: $author"
     fi
     
-    # 事前チェック
-    check_config_file
-    check_template_file
-    check_dependencies
+    # 事前チェック（日付とテーマのみ）
     validate_date "$date_str"
     check_theme_key "$theme"
     
