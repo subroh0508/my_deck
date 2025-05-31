@@ -8,6 +8,7 @@ set -euo pipefail
 # スクリプトのディレクトリを取得
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIG_FILE="${SCRIPT_DIR}/config.yaml"
+TEMPLATE_FILE="${SCRIPT_DIR}/template.md"
 
 # 色付きメッセージ用の関数
 print_info() {
@@ -68,10 +69,17 @@ check_dependencies() {
     fi
 }
 
-# 設定ファイルの存在確認
+# 設定ファイルとテンプレートファイルの存在確認
 check_config_file() {
     if [ ! -f "$CONFIG_FILE" ]; then
         print_error "設定ファイルが見つかりません: $CONFIG_FILE"
+        exit 1
+    fi
+}
+
+check_template_file() {
+    if [ ! -f "$TEMPLATE_FILE" ]; then
+        print_error "テンプレートファイルが見つかりません: $TEMPLATE_FILE"
         exit 1
     fi
 }
@@ -134,49 +142,15 @@ generate_markdown() {
     
     parse_date "$date_str"
     
-    cat > "$output_file" << EOF
----
-marp: true
-theme: $theme
-title: $slide_title
-author: $author
-paginate: true
----
-
-# $slide_title
-
-$event_name
-${YEAR}年${MONTH}月${DAY}日
-
-$author
-
----
-
-## アジェンダ
-
-- 項目1
-- 項目2
-- 項目3
-
----
-
-## セクション1
-
-内容...
-
----
-
-## まとめ
-
-- ポイント1
-- ポイント2
-
----
-
-# ありがとうございました
-
-質問はありますか？
-EOF
+    # テンプレートファイルを読み込んで変数置換
+    sed -e "s/{{THEME}}/$theme/g" \
+        -e "s/{{SLIDE_TITLE}}/$slide_title/g" \
+        -e "s/{{AUTHOR}}/$author/g" \
+        -e "s/{{EVENT_NAME}}/$event_name/g" \
+        -e "s/{{YEAR}}/$YEAR/g" \
+        -e "s/{{MONTH}}/$MONTH/g" \
+        -e "s/{{DAY}}/$DAY/g" \
+        "$TEMPLATE_FILE" > "$output_file"
 }
 
 # メイン処理
@@ -242,6 +216,7 @@ main() {
     
     # 事前チェック
     check_config_file
+    check_template_file
     check_dependencies
     validate_date "$date_str"
     check_theme_key "$theme"
