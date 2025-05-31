@@ -116,9 +116,10 @@ check_theme_key() {
 # ディレクトリの作成
 ensure_directory() {
     local dir="$1"
+    local relative_dir="$2"
     
     if [ ! -d "$dir" ]; then
-        print_info "ディレクトリを作成します: $dir"
+        print_info "ディレクトリを作成します: $relative_dir"
         mkdir -p "$dir"
     fi
 }
@@ -223,22 +224,20 @@ main() {
     
     # 出力ファイルパスの構築
     parse_date "$date_str"
-    OUTPUT_DIR="../$YEAR"
-    OUTPUT_FILE="${OUTPUT_DIR}/${date_str}_${event_name}.md"
+    RELATIVE_OUTPUT_DIR="../$YEAR"
+    RELATIVE_OUTPUT_FILE="${RELATIVE_OUTPUT_DIR}/${date_str}_${event_name}.md"
     
-    # 相対パスを絶対パスに変換
-    if [[ "$OUTPUT_DIR" == ../* ]]; then
-        OUTPUT_DIR="${SCRIPT_DIR}/${OUTPUT_DIR}"
-    fi
+    # 絶対パスも作成（実際のファイル操作用）
+    OUTPUT_DIR="${SCRIPT_DIR}/${RELATIVE_OUTPUT_DIR}"
     OUTPUT_DIR=$(realpath "$OUTPUT_DIR" 2>/dev/null || echo "$OUTPUT_DIR")
     OUTPUT_FILE="${OUTPUT_DIR}/${date_str}_${event_name}.md"
     
     # ディレクトリの確保
-    ensure_directory "$OUTPUT_DIR"
+    ensure_directory "$OUTPUT_DIR" "$RELATIVE_OUTPUT_DIR"
     
     # 既存ファイルの確認
     if [ -f "$OUTPUT_FILE" ]; then
-        print_warning "既存のファイルを上書きします: $OUTPUT_FILE"
+        print_warning "既存のファイルを上書きします: $RELATIVE_OUTPUT_FILE"
     fi
     
     # Markdownファイル生成
@@ -248,12 +247,12 @@ main() {
     print_info "スライドタイトル: $slide_title"
     print_info "発表者: $author"
     print_info "テーマ: $theme"
-    print_info "出力先: $OUTPUT_FILE"
+    print_info "出力先: $RELATIVE_OUTPUT_FILE"
     
     generate_markdown "$date_str" "$event_name" "$slide_title" "$author" "$theme" "$OUTPUT_FILE"
     
     local file_size=$(du -h "$OUTPUT_FILE" | cut -f1)
-    print_success "Markdownファイルの生成が完了しました: $OUTPUT_FILE (サイズ: $file_size)"
+    print_success "Markdownファイルの生成が完了しました: $RELATIVE_OUTPUT_FILE (サイズ: $file_size)"
 }
 
 # スクリプト実行
