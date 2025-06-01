@@ -30,18 +30,6 @@ h6 {
   color: var(--text-color);
 }
 
-header {
-  font-size: 0.7em;
-  color: var(--text-color);
-  border-bottom: 1px solid #040014;
-}
-
-footer {
-  font-size: 0.7em;
-  color: var(--text-color);
-  border-top: 1px solid #040014;
-}
-
 code {
   background-color: #ffffff;
   font-size: 0.9em
@@ -90,9 +78,9 @@ th {
 /* || SECTION CLASS: tinytext */
 /* new class that makes p, ul, and blockquote text smaller */
 /* might be useful for the References slide, use <!-- _class: tinytext --> */
-section.tinytext>p,
-section.tinytext>ul,
-section.tinytext>blockquote {
+section.tinytext > p,
+section.tinytext > ul,
+section.tinytext > blockquote {
   font-size: 0.65em;
 }
 
@@ -100,6 +88,17 @@ section.lead {
   align-content: center;
 }
 
-section.lead > p {
+section.lead > footer {
+  border-top: none;
+  bottom: 100px;
+  right: 78.5px;
+  font-size: 100%;
+  line-height: 1.5;
   text-align: right;
+  color: var(--text-color);
+}
+
+section > h1, h2 {
+  color: var(--text-color);
+  border-bottom: 1px solid #040014;
 }
