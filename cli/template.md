@@ -7,14 +7,15 @@ paginate: true
 _paginate: false
 ---
 
+<!-- _paginate: false -->
+<!-- _class: lead -->
+<!-- _footer: {{YEAR}}/{{MONTH}}/{{DAY}} {{EVENT_NAME}}\n{{AUTHOR}} -->
+
 # {{SLIDE_TITLE}}
 
-{{EVENT_NAME}}
-{{YEAR}}/{{MONTH}}/{{DAY}}
-
-{{AUTHOR}}
-
 ---
+
+<!-- _paginate: hold -->
 
 ## アジェンダ
 
