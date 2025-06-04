@@ -42,6 +42,10 @@ ul li {
   padding-bottom: 0.8em;
 }
 
+li ul {
+  padding-top: 0.8em;
+}
+
 code {
   background-color: #ffffff;
   font-size: 0.9em
@@ -219,13 +223,30 @@ th {
   border-left: 12px solid #edf7f8ff;
 }
 
+section > .flex {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+}
+
+section > .flex > * {
+  flex: var(--flex, 1) 1 0;
+  min-width: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
 /* || SECTION CLASS: tinytext */
 /* new class that makes p, ul, and blockquote text smaller */
 /* might be useful for the References slide, use <!-- _class: tinytext --> */
-section.tinytext p,
-section.tinytext ul,
-section.tinytext blockquote,
-section.tinytext .bubble {
+section.tinytext > p,
+section.tinytext > ul,
+section.tinytext > blockquote,
+section.tinytext > .bubble,
+section.tinytext > .flex > * > p,
+section.tinytext > .flex > * > ul,
+section.tinytext > .flex > * > blockquote,
+section.tinytext > .flex > * > .bubble {
   font-size: 0.8em;
 }
 
@@ -253,17 +274,4 @@ section.lead > h1,
 section.lead > h2 {
   padding-bottom: 0;
   border-bottom: none;
-}
-
-section > .flex {
-  display: flex;
-  flex-direction: row;
-  gap: 2em;
-}
-
-section > .flex > * {
-  flex: var(--flex, 1) 1 0;
-  min-width: 0;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
 }
