@@ -4,14 +4,15 @@
 /* MIT license https://github.com/rnd195/my-marp-themes/blob/live/licenses/LICENSE */
 
 @import "default";
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
 
 :root {
-  font-family: "Work Sans Regular", Arial;
+  font-family: "Noto Sans JP", Arial;
   --main-color: #040014;
   --text-color: #121114;
   --bg-color-alt: #dadada;
   --mark-background: #98d6ff;
+  --red: #df5252;
 }
 
 section {
@@ -37,6 +38,7 @@ ul {
 ul li {
   line-height: 1.7;
   padding-left: 0.5em;
+  padding-bottom: 0.8em;
 }
 
 code {
@@ -63,10 +65,22 @@ img[alt~="center"] {
 }
 
 blockquote {
-  background: #ffffff;
-  border-left: 10px solid var(--main-color);
-  margin: 0.5em;
-  padding: 0.5em;
+  position: relative;
+  background: #ffffff80;
+  padding: 0.5em 0.5em 0.5em 2.0em;
+  font-style: italic;
+}
+
+blockquote::before {
+  display: inline-block;
+  position: absolute;
+  top: 18px;
+  left: 15px;
+  content: '“';
+  color: var(--fgColor-muted);
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 900;
 }
 
 mark {
@@ -87,10 +101,10 @@ th {
 /* || SECTION CLASS: tinytext */
 /* new class that makes p, ul, and blockquote text smaller */
 /* might be useful for the References slide, use <!-- _class: tinytext --> */
-section.tinytext > p,
-section.tinytext > ul,
-section.tinytext > blockquote {
-  font-size: 0.65em;
+section.tinytext p,
+section.tinytext ul,
+section.tinytext blockquote {
+  font-size: 0.8em;
 }
 
 section.lead {
@@ -126,5 +140,8 @@ section > .flex {
 }
 
 section > .flex > * {
-  flex: var(--flex, 1);
+  flex: var(--flex, 1) 1 0;
+  min-width: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
