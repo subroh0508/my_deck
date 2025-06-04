@@ -7,14 +7,52 @@ paginate: true
 _paginate: false
 ---
 
+<style>
+   :root {
+      --color-kaho: #f8b500;
+      --color-ginko: #a2d7dd;
+      --color-tuduri: #ba2636;
+   }
+
+   .script {
+      font-size: 0.7em !important;
+   }
+
+   .kaho {
+     --bubble-background: var(--color-kaho);
+     color: #ffffff;
+   }
+
+   .ginko {
+     --bubble-background: var(--color-ginko);
+   }
+
+   .tuduri {
+     --bubble-background: var(--color-tuduri);
+     color: #ffffff;
+   }
+</style>
+
 <!-- _paginate: false -->
 <!-- _class: lead -->
 <!-- _footer: 2025/06/14 【拡大版】アニメから得た学びを発表会\nにしこりさぶろ〜(@subroh_0508) -->
 
 # 組織が変化を生み出し続けるために必要な3つの要素
-## 〜蓮ノ空女学院スクールアイドルクラブから学ぶ〜
+
+**〜蓮ノ空女学院スクールアイドルクラブから学ぶ〜**
 
 ---
+
+---
+
+<style scoped>
+  ul {
+    list-style-type: "💖";
+  }
+  ul ul {
+    list-style-type: "➔";
+  }
+</style>
 
 <!-- _paginate: hold -->
 
@@ -31,28 +69,191 @@ _paginate: false
 
 ---
 
-## なぜ組織変化が重要なのか
+<style scoped>
+  ul {
+    list-style-type: "🪷";
+  }
+</style>
 
-- 技術の急速な進歩
-- 市場環境の変化
-- ユーザーニーズの多様化
-- 競争優位性の維持
+<!-- _class: tinytext -->
 
-**継続的な変化なくして、組織の成長はない**
+## 『ラブライブ！蓮ノ空女学院スクールアイドルクラブ』とは？
+
+<div class="flex">
+  <div style="--flex: 2">
+
+  > 限りある時間を越えて、精一杯に花咲こうともがく。
+  > これは、そんな彼女たちの<ruby>「みんなで叶える物語」<rt>スクールアイドルプロジェクト</rt></ruby>――
+
+   <div style="margin-top: 1em"></div>
+
+   - ラブライブ！シリーズ第5作
+   - 石川県金沢市の山奥にあり、創立100年を超える歴史を持つ<br/>私立蓮ノ空女学院に通うスクールアイドルを描く
+   - <span style="color: var(--red);">**作中の時間軸が、現実世界と完全に同期している**</span>
+
+   <div class="bubble bubble-top">彼女たちは、現実世界と同じタイミングで歳を取る！<br/>毎年新入生が増え🥰、そして3年生が卒業する😭</div>
+
+  </div>
+
+  <div style="--flex: 1">
+
+  ![height:500px](/assets/hasunosora_105kv.webp)
+
+  </div>
+</div>
 
 ---
 
-## 蓮ノ空女学院スクールアイドルクラブとは
+<style scoped>
+  ul {
+    list-style-type: "🪷";
+  }
+  ul ul {
+    list-style-type: "➔";
+  }
+</style>
 
-- アニメ『ラブライブ！蓮ノ空女学院スクールアイドルクラブ』に登場
-- 廃校危機に直面した蓮ノ空女学院を救うために結成
-- 初期は3人の小さなクラブからスタート
-- 最終的に学校全体を巻き込む大きな変化を実現
+<!-- _class: tinytext -->
 
-**小さな組織が大きな変化を生み出した事例として注目**
+## 蓮ノ空のスクールアイドルクラブ、ここがすごい！
+
+<div class="flex">
+  <div style="--flex: 1.4">
+
+  - **約60年以上の歴史を持つ**
+    - "スクールアイドル"という言葉がなかった時代から<br/>「芸楽部」として活動
+    - 約60年分の活動記録が、日誌に残されている
+  - <span style="opacity: 0.2;"> **ラブライブ！強豪校の1つ**
+    - 十数年前に一度、優勝を経験
+    - 2022・2023年度: 決勝大会進出、2024年度: 優勝🏆️</span>
+
+  </div>
+
+  <div style="--flex: 1">
+
+  ![height:250px](/assets/hasunosora_10401_part06_01.png)
+
+  <div class="bubble bubble-top ginko script">私のおばあちゃん。<br/>もう50年ぐらい前なんですけど、<br/>蓮ノ空女学院で芸楽部に入って、<br/>アイドルしてたんです。</div>
+
+  </div>
+ </div>
 
 ---
 
+<style scoped>
+  ul {
+    list-style-type: "🪷";
+  }
+  ul ul {
+    list-style-type: "➔";
+  }
+</style>
+
+<!-- _paginate: hold -->
+<!-- _class: tinytext -->
+
+## 蓮ノ空のスクールアイドルクラブ、ここがすごい！
+
+<div class="flex">
+  <div style="--flex: 1.4">
+
+  - **約60年以上の歴史を持つ**
+    - "スクールアイドル"という言葉がなかった時代から<br/>「芸楽部」として活動
+    - 約60年分の活動記録が、日誌に残されている
+  - <span style="opacity: 0.2;"> **ラブライブ！強豪校の1つ**
+    - 十数年前に一度、優勝を経験
+    - 2022・2023年度: 決勝大会進出、2024年度: 優勝🏆️</span>
+
+  </div>
+
+  <div style="--flex: 1">
+
+  ![height:250px](/assets/hasunosora_10401_part16_01.png)
+
+  <div class="bubble bubble-top kaho script">芸楽部ができてから、約60年。<br/>すごい、<br/>ダンボール何個あるんだろ……。<br/>
+
+  </div>
+ </div>
+
+---
+
+<style scoped>
+  ul {
+    list-style-type: "🪷";
+  }
+  ul ul {
+    list-style-type: "➔";
+  }
+</style>
+
+<!-- _paginate: hold -->
+<!-- _class: tinytext -->
+
+## 蓮ノ空のスクールアイドルクラブ、ここがすごい！
+
+<div class="flex">
+  <div style="--flex: 1.4">
+
+  - <span style="opacity: 0.2;"> **約60年以上の歴史を持つ**
+    - "スクールアイドル"という言葉がなかった時代から<br/>「芸楽部」として活動
+    - 約60年分の活動記録が、日誌に残されている</span>
+  - **ラブライブ！強豪校の1つ**
+    - 十数年前に一度、優勝を経験
+    - 2022・2023年度: 決勝大会進出、2024年度: 優勝🏆️
+
+  </div>
+
+  <div style="--flex: 1; text-align: center;">
+
+  ![height:400px](/assets/hasunosora_lldays_202503.png)
+
+  </div>
+ </div>
+
+---
+
+<style scoped>
+  ul {
+    list-style-type: "🪷";
+  }
+  ul ul {
+    list-style-type: "➔";
+  }
+</style>
+
+<!-- _paginate: hold -->
+<!-- _class: tinytext -->
+
+## 蓮ノ空のスクールアイドルクラブ、ここがすごい！
+
+<div class="flex">
+  <div style="--flex: 1.4">
+
+  - **約60年以上の歴史を持つ**
+    - "スクールアイドル"という言葉がなかった時代から<br/>「芸楽部」として活動
+    - 約60年分の活動記録が、日誌に残されている
+  - **ラブライブ！強豪校の1つ**
+    - 十数年前に一度、優勝を経験
+    - 2022・2023年度: 決勝大会進出、2024年度: 優勝🏆️
+
+  </div>
+
+  <div style="--flex: 1; text-align: center;">
+
+  ![height:250px](/assets/hasunosora_saikyo.webp)
+
+  <div class="bubble bubble-top tuduri script">蓮ノ空さいきょー。</div>
+
+  </div>
+ </div>
+
+ <div style="text-align: center">
+ 
+ **半世紀以上にわたりアクティブに活動し続け、かつ大きな成果も残している組織**
+ 
+ </div>
+
+---
 ## 要素1：ビジョン・目標の明確化
 
 ### 蓮ノ空の事例
