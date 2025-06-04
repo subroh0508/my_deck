@@ -98,7 +98,23 @@ section.lead > footer {
   color: var(--text-color);
 }
 
-section > h1, h2 {
+section > h1,
+section > h2 {
   color: var(--text-color);
   border-bottom: 1px solid #040014;
+}
+
+section.lead > h1,
+section.lead > h2 {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+ul {
+  padding-left: 1em;
+}
+
+ul li {
+  line-height: 1.7;
+  padding-left: 0.5em;
 }
