@@ -15,19 +15,43 @@ _paginate: false
 
 ---
 
+<style scoped>
+  ul {
+    list-style-type: "⭐️";
+  }
+  ul ul {
+    list-style-type: "➔";
+  }
+</style>
+
 <!-- _paginate: hold -->
 
 ## アジェンダ
 
 - 項目1
 - 項目2
+  - 項目2-1
+  - 項目2-2
 - 項目3
 
 ---
 
 ## セクション1
 
-内容...
+<div class="flex">
+  <div style="--flex: 1">
+
+  - aaa
+  - bbb
+
+  </div>
+  <div style="--flex: 1">
+
+  - aaa
+  - bbb
+
+  </div>
+</div>
 
 ---
 

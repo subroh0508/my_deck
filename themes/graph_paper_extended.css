@@ -30,6 +30,15 @@ h6 {
   color: var(--text-color);
 }
 
+ul {
+  padding-left: 1em;
+}
+
+ul li {
+  line-height: 1.7;
+  padding-left: 0.5em;
+}
+
 code {
   background-color: #ffffff;
   font-size: 0.9em
@@ -110,11 +119,12 @@ section.lead > h2 {
   border-bottom: none;
 }
 
-ul {
-  padding-left: 1em;
+section > .flex {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
 }
 
-ul li {
-  line-height: 1.7;
-  padding-left: 0.5em;
+section > .flex > * {
+  flex: var(--flex, 1);
 }
