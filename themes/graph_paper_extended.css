@@ -12,6 +12,7 @@
   --text-color: #121114;
   --bg-color-alt: #dadada;
   --mark-background: #98d6ff;
+  --bubble-background: #e6f3ff;
   --red: #df5252;
 }
 
@@ -98,12 +99,133 @@ th {
   color: white;
 }
 
+/* || SPEECH BUBBLE STYLES */
+/* Use classes: bubble-top, bubble-bottom, bubble-left, bubble-right */
+.bubble {
+  position: relative;
+  background: var(--bubble-background);
+  border: 2px solid var(--bubble-background);
+  border-radius: 10px;
+  padding: 1em;
+  margin: 1em;
+  text-align: center;
+}
+
+/* Arrow pointing up */
+.bubble-top::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid var(--bubble-background);
+}
+
+.bubble-top::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid var(--bubble-background);
+}
+
+/* Arrow pointing down */
+.bubble-bottom::before {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid var(--bubble-background);
+}
+
+.bubble-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid var(--bubble-background);
+}
+
+/* Arrow pointing left */
+.bubble-left::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 15px solid var(--bubble-background);
+}
+
+.bubble-left::after {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 12px solid var(--bubble-background);
+}
+
+/* Arrow pointing right */
+.bubble-right::before {
+  content: "";
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid #edf7f8ff;
+}
+
+.bubble-right::after {
+  content: "";
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid #edf7f8ff;
+}
+
 /* || SECTION CLASS: tinytext */
 /* new class that makes p, ul, and blockquote text smaller */
 /* might be useful for the References slide, use <!-- _class: tinytext --> */
 section.tinytext p,
 section.tinytext ul,
-section.tinytext blockquote {
+section.tinytext blockquote,
+section.tinytext .bubble {
   font-size: 0.8em;
 }
 
