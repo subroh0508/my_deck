@@ -1,0 +1,8 @@
+{
+  "name": "my_deck",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npx @marp-team/marp-cli@latest -s . --theme-set ./themes/*.css --html"
+  },
+  "author": "subroh_0508"
+}
