@@ -43,6 +43,38 @@ _paginate: false
 
 ---
 
+<!-- _class: intro tinytext -->
+
+## 自己紹介 / リアルのすがた
+
+<div class="flex">
+  <div style="--flex: 1">
+    <img class="circle-image" src="/assets/real_icon.jpg"/>
+  </div>
+
+  <div style="--flex: 2">
+
+  <p class="name-container">
+  プロダクト本部 プロダクト組織開発部 DevHR<br/>
+  <span class="name">坂上 晴信</span><br/>
+  <span class="name-small">Harunobu Sakaue</span>
+  </p>
+  <p class="description">
+  1995年生まれ。東京の離島・伊豆大島出身。
+  プロダクト組織専任の人事職として、あらゆる業務に従事。
+  </p>
+
+  - 2016/03 東京高専 情報工学科卒
+  - 2016/04 株式会社TOKIUM入社<br/>2016/04 💼Android/Webエンジニア (6年8ヶ月)
+  - 2023/01 DevHRにロールチェンジ<br/>2023/01 💼エンジニア採用・育成・組織づくり・広報
+
+  </div>
+</div>
+
+---
+
+## 自己紹介 / インターネットのすがた
+
 ---
 
 <style scoped>
